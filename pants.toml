@@ -1,0 +1,29 @@
+[GLOBAL]
+pants_version = "2.11.0"
+
+backend_packages = [
+  "pants.backend.python",
+  "pants.backend.experimental.go",
+  "pants.backend.experimental.codegen.protobuf.go",
+  "pants.backend.python.lint.black",
+  'pants.backend.python.lint.isort',
+  "pants.backend.python.typecheck.mypy",
+  "pants.backend.codegen.protobuf.python",
+  "pants.backend.codegen.protobuf.lint.buf",
+]
+
+[python]
+enable_resolves = true
+interpreter_constraints = ["CPython==3.9.*"]
+lockfile_generator = 'pex'
+
+[python-protobuf]
+mypy_plugin = true
+
+[python.resolves]
+python-default = "3rdparty/python/default.lock" 
+
+[golang]
+go_search_paths = [
+    "/home/illumina/.asdf/installs/golang/1.17.3/go/bin"
+]
